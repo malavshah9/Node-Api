@@ -1,10 +1,10 @@
 {
     "compilerOptions": {
-        "outDir": "./dist",
-        "allowJs": false,
+        "outDir": "./dist/",
+        "noImplicitAny": true,
+        "module": "es6",
         "target": "es5",
-        "esModuleInterop": true,
-        "resolveJsonModule": true
-    },
-    "include": ["./*"]
+        "jsx": "react",
+        "allowJs": true
+    }
 }

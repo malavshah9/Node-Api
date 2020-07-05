@@ -7,9 +7,18 @@ import inert from '@hapi/inert';
 import vision from '@hapi/vision';
 import hapiSwaggerUI from 'hapi-swaggered-ui';
 import hapiSwaggered from 'hapi-swaggered';
+import hapiRateLimit from 'hapi-rate-limit';
 
 const init = async () => {
     const server = Hapi.server(serverConfig);
+    server.register({
+        plugin: hapiRateLimit,
+        options:{
+            enabled: true,
+            userLimit: 100,
+            pathLimit: 50
+        },
+    })
     await (async () => {
         await server.register({
             plugin: wurst,
