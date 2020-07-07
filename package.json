@@ -19,13 +19,18 @@
         "hapi-swagger": "^13.0.2",
         "hapi-swaggered": "^3.1.0",
         "hapi-swaggered-ui": "^3.1.0",
+        "lodash": "^4.17.15",
+        "map-keys-deep": "0.0.2",
+        "mysql2": "^2.1.0",
         "semver": "^7.3.2",
         "sequelize": "^6.3.0",
         "wurst": "^5.0.1"
     },
     "devDependencies": {
+        "eslint": "^7.4.0",
         "esm": "^3.2.25",
         "nodemon": "^2.0.4",
+        "prettier": "^2.0.5",
         "ts-loader": "^7.0.5",
         "tslint": "^6.1.2",
         "typescript": "^3.9.6",
