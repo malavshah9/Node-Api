@@ -12,6 +12,19 @@ import hapiSwaggered from 'hapi-swaggered';
 import hapiRateLimit from 'hapi-rate-limit';
 import db from './lib/models';
 import dbConfig from './config/config';
+// const prepDatabase = async () => {
+//     db.sequelize
+//         .sync({
+//             force: false,
+//             alter: true
+//         })
+//         .then((data) => {
+//             console.log(' All models were synchronized successfully ');
+//         })
+//         .catch((err) => {
+//             console.error(' error in synchronizing models ', err);
+//         });
+// };
 const prepDatabase = async () => {
     await db.sequelize
         .authenticate()
