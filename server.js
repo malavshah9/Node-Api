@@ -12,31 +12,31 @@ import hapiSwaggered from 'hapi-swaggered';
 import hapiRateLimit from 'hapi-rate-limit';
 import db from './lib/models';
 import dbConfig from './config/config';
-// const prepDatabase = async () => {
-//     db.sequelize
-//         .sync({
-//             force: false,
-//             alter: true
-//         })
-//         .then((data) => {
-//             console.log(' All models were synchronized successfully ');
-//         })
-//         .catch((err) => {
-//             console.error(' error in synchronizing models ', err);
-//         });
-// };
 const prepDatabase = async () => {
-    await db.sequelize
-        .authenticate()
-        .then(() => {
-            // eslint-disable-next-line no-console
-            console.log('Connection has been established successfully.');
+    db.sequelize
+        .sync({
+            force: false,
+            alter: true
+        })
+        .then((data) => {
+            console.log(' All models were synchronized successfully ');
         })
         .catch((err) => {
-            // eslint-disable-next-line no-console
-            console.error('Unable to connect to the database:', err);
+            console.error(' error in synchronizing models ', err);
         });
 };
+// const prepDatabase = async () => {
+//     await db.sequelize
+//         .authenticate()
+//         .then(() => {
+//             // eslint-disable-next-line no-console
+//             console.log('Connection has been established successfully.');
+//         })
+//         .catch((err) => {
+//             // eslint-disable-next-line no-console
+//             console.error('Unable to connect to the database:', err);
+//         });
+// };
 const init = async () => {
     const server = Hapi.server(serverConfig);
     server.register({
