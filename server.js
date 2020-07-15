@@ -6,12 +6,15 @@ import { camelCase, snakeCase } from 'lodash';
 import serverConfig from './config/server';
 import Pack from './package.json';
 import inert from '@hapi/inert';
+import hapiAuthJWT from 'hapi-auth-jwt2';
 import vision from '@hapi/vision';
 import hapiSwaggerUI from 'hapi-swaggered-ui';
 import hapiSwaggered from 'hapi-swaggered';
 import hapiRateLimit from 'hapi-rate-limit';
 import db from './lib/models';
 import dbConfig from './config/config';
+import { validate } from './utils/token';
+import secret from './config/secret';
 const prepDatabase = async () => {
     db.sequelize
         .sync({
@@ -57,6 +60,23 @@ const init = async () => {
             }
         });
     })();
+    // await server.register({
+    //     plugin: JWT
+    // });
+    // server.auth.strategy('jwt', 'jwt', {
+    //     key: secret,
+    //     validate,
+    //     verifyOptions: { ignoreExpiration: true }
+    // });
+
+    // server.auth.default('jwt');
+    await server.register(hapiAuthJWT);
+    server.auth.strategy('jwt', 'jwt', {
+        key: secret, // Never Share your secret key
+        validate, // validate function defined above
+        algorithms: ['HS256'] // specify your secure algorithm
+    });
+    server.auth.default('jwt');
     await server.register([
         inert,
         vision,

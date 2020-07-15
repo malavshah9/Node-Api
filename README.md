@@ -10,8 +10,8 @@
     [x]  Middleware for proper http error status
     [x]  Sequelize
     [x]  Rate limited APIs
+    [x]  Authentication Middleware
+    []  Swagger Documentation
     []  Test with at least 80% Coverage
     []  DB migration and seed scripts
-    []  Authentication Middleware
-    []  Swagger Documentation
     []  Paginated APIs
