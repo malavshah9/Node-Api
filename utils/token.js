@@ -1,11 +1,10 @@
 import JWT from 'jsonwebtoken';
-import secret from '../config/secret';
 
 export const createToken = async (email) => {
     return new Promise((resolve, reject) => {
         JWT.sign(
             { email: email },
-            secret,
+            process.env.JWT_SECRET,
             {
                 algorithm: 'HS256',
                 expiresIn: '1h'

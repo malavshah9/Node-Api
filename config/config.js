@@ -1,10 +1,16 @@
-module.exports = {
+import env from 'dotenv';
+if (process.env.ENV === 'PROD') {
+    env.config({ path: 'prod.env' });
+} else {
+    env.config({ path: 'dev.env' });
+}
+export default {
     development: {
-        url: 'localhost',
-        user: 'root',
-        password: '1234',
-        db: 'cabbooking_schema',
-        logging: true,
+        url: process.env.URL,
+        user: process.env.DB_USER,
+        password: process.env.PASSWORD,
+        db: process.env.DATABASE,
+        logging: process.env.LOGGING,
         options: {
             dialect: 'mysql',
             pool: {
@@ -20,18 +26,3 @@ module.exports = {
         }
     }
 };
-/*
-Server: sql12.freemysqlhosting.net
-Name: sql12354339
-Username: sql12354339
-Password: pLT9N2QkUh
-Port number: 3306
-db: 'sql12354339'
-
-
-Default:
-Server: 'localhost'
-user: 'root'
-password: '1234'
-db: 'cabbooking_schema'
-*/

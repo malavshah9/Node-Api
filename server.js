@@ -14,7 +14,6 @@ import hapiRateLimit from 'hapi-rate-limit';
 import db from './lib/models';
 import dbConfig from './config/config';
 import { validate } from './utils/token';
-import secret from './config/secret';
 const prepDatabase = async () => {
     db.sequelize
         .sync({
@@ -72,7 +71,7 @@ const init = async () => {
     // server.auth.default('jwt');
     await server.register(hapiAuthJWT);
     server.auth.strategy('jwt', 'jwt', {
-        key: secret, // Never Share your secret key
+        key: process.env.JWT_SECRET, // Never Share your secret key
         validate, // validate function defined above
         algorithms: ['HS256'] // specify your secure algorithm
     });

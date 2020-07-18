@@ -19,6 +19,7 @@
         "@hapi/vision": "5.5.4",
         "bcrypt": "^5.0.0",
         "bcryptjs": "^2.4.3",
+        "dotenv": "^8.2.0",
         "hapi-auth-basic": "^5.0.0",
         "hapi-auth-jwt2": "^10.1.0",
         "hapi-rate-limit": "^5.0.0",
